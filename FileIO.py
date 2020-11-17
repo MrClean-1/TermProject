@@ -3,7 +3,7 @@ import numpy as np
 
 class FileIO:
     def __init__(self):
-        self.filePath = 'weather.csv'
+        self.filePath = 'CalgaryWeather.csv'
         self.dataTable = self.read_weather()
         self.y = self.dataTable[:, 3]
         self.x = self.dataTable[:, 1]

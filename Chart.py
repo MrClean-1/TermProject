@@ -7,18 +7,18 @@ class Chart:
         self.data = FileIO.FileIO()
         self.dataTable = self.data.dataTable
 
-    def drawLineChart(self, x, y):
-        pyplot.title('Temperatures in Calgary between Jan-Dec in 2000')
-        pyplot.ylabel('Min Temperatures (F)')
-        pyplot.xlabel("Month of Year")
+    def drawLineChart(self, x, y, title, xlabel, ylabel):
+        pyplot.title(title)
+        pyplot.ylabel(ylabel)
+        pyplot.xlabel(xlabel)
 
         pyplot.plot(x, y, marker='o')
         pyplot.show()
 
-    def drawBarChart(self, x, y):
-        pyplot.title('Temperatures in Calgary between Jan-Dec in 2000')
-        pyplot.ylabel('Min Temperatures (F)')
-        pyplot.xlabel("Month of Year")
+    def drawBarChart(self, x, y, title, xlabel, ylabel):
+        pyplot.title(title)
+        pyplot.ylabel(ylabel)
+        pyplot.xlabel(xlabel)
 
         pyplot.bar(x, y)
         pyplot.show()
