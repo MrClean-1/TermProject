@@ -68,8 +68,8 @@ def main():
             elif choice == 11:
                 running = False
             else:
-                raise
-        except:
+                raise ValueError
+        except ValueError:
             print('Invalid selection, try again')
 
 

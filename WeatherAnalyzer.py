@@ -54,7 +54,7 @@ class WeatherAnalyzer:
                         localMax = self.tempData[i+month].maxTemp
                     # If we got an out of bounds there's not enough data for that year
                     # In this case we don't want to append that year
-                except:
+                except IndexError:
                     # If we're out of bounds just return the data as it is
                     return annuallMax
             localYearMax.append(localMax)
@@ -73,7 +73,7 @@ class WeatherAnalyzer:
                 # In this case we don't want to append that year
                 yearAvg.append(self.tempData[i].date.year)
                 yearAvg.append(yearSum/12)
-            except:
+            except IndexError:
                 # If we're out of bounds just return the data as it is
                 return annualAvg
             annualAvg.append(yearAvg)
