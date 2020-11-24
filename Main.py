@@ -15,6 +15,10 @@ def main():
         print('4- Get Maximum Temperature of 1990-2019 Annually')
         print('5- Get Average Snowfall between 1990-2019 Annually')
         print('6- Get Average Temperature between 1990-2019 Annually')
+        print('7- Graph Minimum Temperatures of 1990-2019 annually')
+        print('8- Graph Maximum Temperatures of 1990-2019 annually')
+        print('9- Graph Average Snowfall between 1990-2019 annually')
+        print('10- Graph Average Temperature between 1990-2019 annually')
         try:
             choice = int(input('11- Exit Program'))
             if choice == 1:
