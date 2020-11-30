@@ -53,12 +53,12 @@ def main():
                 # Since we can't slice the array when it's nested we convert it to a numpy array first then slice
                 data = np.array(weatherAnal.getMinTempAnnually())
                 chart.drawLineChart(data[:, 0], data[:, 1],
-                                    'Minimum Temperatures of 1990-2019 annually', 'Year', 'Min Temp (F)')
+                                    'Minimum Temperatures of 1990-2019 annually', 'Year', 'Min Temp')
             elif choice == 8:
                 # Since we can't slice the array when it's nested we convert it to a numpy array first then slice
                 data = np.array(weatherAnal.getMaxTempAnnually())
                 chart.drawLineChart(data[:, 0], data[:, 1],
-                                    'Maximum Temperatures of 1990-2019 annually', 'Year', 'Max Temp (F)')
+                                    'Maximum Temperatures of 1990-2019 annually', 'Year', 'Max Temp')
             elif choice == 9:
                 # Since we can't slice the array when it's nested we convert it to a numpy array first then slice
                 data = np.array(weatherAnal.getAvgSnowfallAnnually())
@@ -68,7 +68,7 @@ def main():
                 # Since we can't slice the array when it's nested we convert it to a numpy array first then slice
                 data = np.array(weatherAnal.getAvgTempAnnually())
                 chart.drawBarChart(data[:, 0], data[:, 1],
-                                   'Average Temperature between 1990-2019 annually', 'Year', 'Average Temp (F)')
+                                   'Average Temperature between 1990-2019 annually', 'Year', 'Average Temp')
             elif choice == 11:
                 running = False
             else:

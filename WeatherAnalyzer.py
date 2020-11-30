@@ -1,6 +1,6 @@
 import TemperatureData
 import FileIO
-
+import numpy as np
 
 class WeatherAnalyzer:
     def __init__(self):
@@ -80,17 +80,23 @@ class WeatherAnalyzer:
         return annualAvg
 
     def getAvgTempAnnually(self):
-        annualMax = self.getMaxTempAnnually()
-        annualMin = self.getMinTempAnnually()
-        # both of these arrays will be the same length
-        # we compare them and create a new array
         annualAvg = []
-        for i in range(len(annualMax)):
-            annualAvgYear = []
-            annualAvgYear.append(annualMax[i][0])
-            # compare and average the max and min and append
-            annualAvgYear.append((annualMax[i][1] + annualMin[i][1]) / 2)
-            # then we append that year to the annualAvg 2d array
-            annualAvg.append(annualAvgYear)
+        # We run through every element in the tempData array
+        # We create a list within that loop which has the average for that month
+        # We average the list and append it to annualAvg
+        for i in range(0, len(self.tempData), 12):
+            yearAvg = []
+            try:
+                for month in range(12):
+                    yearAvg.append((self.tempData[i + month].minTemp +
+                                    self.tempData[i + month].maxTemp) / 2)
+                temp = []
+                yearAvg = np.array(yearAvg)
+                temp.append(self.tempData[i].date.year)
+                temp.append(np.average(yearAvg))
+                annualAvg.append(temp)
+                # If this excepts the issue is that there was not a full year of data
+                # In this case we break and return
+            except IndexError:
+                return annualAvg
         return annualAvg
-
