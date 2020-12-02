@@ -2,8 +2,8 @@ import numpy as np
 
 
 class FileIO:
-    def __init__(self):
-        self.filePath = 'CalgaryWeather.csv'
+    def __init__(self, file_path):
+        self.filePath = file_path
         self.dataTable = self.read_weather()
         self.y = self.dataTable[:, 3]
         self.x = self.dataTable[:, 1]

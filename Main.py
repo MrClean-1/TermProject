@@ -5,7 +5,7 @@ import numpy as np
 
 # This is the "menu bar"
 def main():
-    weatherAnal = WeatherAnalyzer.WeatherAnalyzer()
+    weatherAnal = WeatherAnalyzer.WeatherAnalyzer('CalgaryWeather.csv')
     chart = Chart.Chart()
     running = True
     while running:

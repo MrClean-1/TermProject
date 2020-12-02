@@ -2,9 +2,10 @@ import TemperatureData
 import FileIO
 import numpy as np
 
+
 class WeatherAnalyzer:
-    def __init__(self):
-        self.dataTable = FileIO.FileIO().dataTable
+    def __init__(self, file_path):
+        self.dataTable = FileIO.FileIO(file_path).dataTable
         self.tempData = []
         for i in range(len(self.dataTable)):
             self.tempData.append(TemperatureData.TemperatureData(i, self.dataTable))
@@ -28,9 +29,11 @@ class WeatherAnalyzer:
                         localMin = self.tempData[i + month].minTemp
                     # If we got an out of bounds there's not enough data for that year
                     # In this case we don't want to append that year
-                except:
+                except IndexError:
                     # If we're out of bounds just return the data as it is
-                    return annuallMin
+                    # Even tho it doesn't make sense (it's an outlier)
+                    # do it for the marks i guesssssss
+                    break
             localYearMin.append(localMin)
             annuallMin.append(localYearMin)
         return annuallMin
@@ -55,8 +58,10 @@ class WeatherAnalyzer:
                     # If we got an out of bounds there's not enough data for that year
                     # In this case we don't want to append that year
                 except IndexError:
-                    # If we're out of bounds just return the data as it is
-                    return annuallMax
+                    # If we're out of bounds just append this max
+                    # Even tho it doesn't make sense (it's an outlier)
+                    # do it for the marks i guesssssss
+                    break
             localYearMax.append(localMax)
             annuallMax.append(localYearMax)
         return annuallMax
@@ -74,8 +79,11 @@ class WeatherAnalyzer:
                 yearAvg.append(self.tempData[i].date.year)
                 yearAvg.append(yearSum/12)
             except IndexError:
-                # If we're out of bounds just return the data as it is
-                return annualAvg
+                # If we're out of bounds just append this snowfall as is
+                # Even tho it doesn't make sense (it's an outlier)
+                # do it for the marks i guesssssss
+                yearAvg.append(self.tempData[i].date.year)
+                yearAvg.append(yearSum/month)
             annualAvg.append(yearAvg)
         return annualAvg
 
@@ -96,7 +104,14 @@ class WeatherAnalyzer:
                 temp.append(np.average(yearAvg))
                 annualAvg.append(temp)
                 # If this excepts the issue is that there was not a full year of data
-                # In this case we break and return
+                # In this case we: add the data as is
+                # Even tho it doesn't make sense (it's an outlier)
+                # do it for the marks i guesssssss
             except IndexError:
+                temp = []
+                yearAvg = np.array(yearAvg)
+                temp.append(self.tempData[i].date.year)
+                temp.append(np.average(yearAvg))
+                annualAvg.append(temp)
                 return annualAvg
         return annualAvg
